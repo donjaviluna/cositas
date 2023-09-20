@@ -1,0 +1,4 @@
+@font-face {
+    font-family: 'Laira';
+    src: local('Laira'), url("@/assets/fonts/Laira.otf") format('otf');
+}
