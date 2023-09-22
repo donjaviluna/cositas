@@ -4,7 +4,15 @@ import Icon from "@/components/ui/Icon";
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
+import { useLocation } from "react-router-dom";
+
 const HorizentalMenu = () => {
+
+  const location = useLocation();
+
+
+  const subruta = location.pathname.split("/")[1]
+
   return (
     <div className="main-menu">
       <ul>
@@ -17,16 +25,17 @@ const HorizentalMenu = () => {
                 : "" || item.megamenu
                 ? "menu-item-has-children has-megamenu"
                 : ""
+                + "ml-6 rtl:mr-6"
             }
           >
             {/* Single menu*/}
             {!item.child && !item.megamenu && (
               <Link to={item.link}>
-                <div className="flex flex-1 items-center space-x-[6px] rtl:space-x-reverse">
+                <div className={`flex flex-1 items-center space-x-[6px] rtl:space-x-reverse`}>
                   <span className="icon-box">
                     <Icon icon={item.icon} />
                   </span>
-                  <div className="text-box">{item.title}</div>
+                  <div className={`text-white  ${subruta === item.link ? "border-b border-slate-200 dark:border-slate-700" : ""}`}>{item.title}</div>
                 </div>
               </Link>
             )}

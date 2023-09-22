@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 const themeConfig = {
   app: {
-    name: "Dashcode React",
+    name: "Lambda Beats",
   },
   // layout
   layout: {
@@ -10,7 +10,7 @@ const themeConfig = {
     semiDarkMode: false,
     skin: "default",
     contentWidth: "full",
-    type: "vertical",
+    type: "horizontal",
     navBarType: "sticky",
     footerType: "static",
     isMonochrome: false,

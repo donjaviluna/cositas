@@ -1,9 +1,14 @@
 import React, { lazy, Suspense } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import "@/assets/fonts/Laira.otf";
 
 // home pages  & dashboard
 //import Dashboard from "./pages/dashboard";
+
+const Feed = lazy(() => import("./pages/feed"));
+const Mixmaster = lazy(() => import("./pages/mixmaster"));
+const Proyectos = lazy(() => import("./pages/proyectos"));
+const Contacto = lazy(() => import("./pages/contacto"));
+
 const Dashboard = lazy(() => import("./pages/dashboard"));
 const Ecommerce = lazy(() => import("./pages/dashboard/ecommerce"));
 const CrmPage = lazy(() => import("./pages/dashboard/crm"));
@@ -129,25 +134,29 @@ import Sellers from "./pages/ecommerce/sellers";
 import AddProduct from "./pages/ecommerce/add-product";
 import InvoiceEPage from "./pages/ecommerce/invoice-ecompage";
 import HomeLayout from "./layout/HomeLayout";
-
+import Bienvenida from './pages/home';
 function App() {
   return (
     <main className="App  relative">
       <Routes>
-        <Route path="/" element={<HomeLayout />}>
-          <Route path="/" element={<Login />} />
-          <Route path="/login2" element={<Login2 />} />
-          <Route path="/login3" element={<Login3 />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/register2" element={<Register2 />} />
-          <Route path="/register3" element={<Register3 />} />
-          <Route path="/forgot-password" element={<ForgotPass />} />
-          <Route path="/forgot-password2" element={<ForgotPass2 />} />
-          <Route path="/forgot-password3" element={<ForgotPass3 />} />
-          <Route path="/lock-screen" element={<LockScreen />} />
-          <Route path="/lock-screen2" element={<LockScreen2 />} />
-          <Route path="/lock-screen3" element={<LockScreen3 />} />
-        </Route>
+          <Route path="/" element={<Bienvenida />}/>
+          <Route path="/*" element={<HomeLayout />}>
+            <Route path="feed" element={<Feed />} />
+            <Route path="mixmaster" element={<Mixmaster />} />
+            <Route path="proyectos" element={<Proyectos />} />
+            <Route path="contacto" element={<Contacto />} />
+            {/* <Route path="/login2" element={<Login2 />} />
+            <Route path="/login3" element={<Login3 />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/register2" element={<Register2 />} />
+            <Route path="/register3" element={<Register3 />} />
+            <Route path="/forgot-password" element={<ForgotPass />} />
+            <Route path="/forgot-password2" element={<ForgotPass2 />} />
+            <Route path="/forgot-password3" element={<ForgotPass3 />} />
+            <Route path="/lock-screen" element={<LockScreen />} />
+            <Route path="/lock-screen2" element={<LockScreen2 />} />
+            <Route path="/lock-screen3" element={<LockScreen3 />} /> */}
+          </Route>
         <Route path="/*" element={<Layout />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="ecommerce" element={<Ecommerce />} />

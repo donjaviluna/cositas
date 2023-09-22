@@ -2,25 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "@/assets/fonts/fonts.css";
-
-@font-face {
-  font-family: 'Laira';
-  src: local('Laira'), url("@/assets/fonts/Laira.otf") format('otf');
-}
 
 @layer base {
   body {
-    @apply h-full overflow-x-hidden dark:text-slate-300 text-slate-600 font-normal;
+    @apply h-full overflow-x-hidden dark:text-slate-300 text-slate-600 font-normal bg-[#000000];
   }
   body.light, body.skin--default {
-    @apply bg-slate-100;
+    @apply bg-[#000000];
   }
   body.lght, body.skin--bordered {
-    @apply bg-transparent;
+    @apply bg-[#000000];
   }
   body.dark {
-    @apply bg-[#0f172a] text-slate-300;
+    @apply bg-[#000000] text-slate-300;
   }
   html,
   body {
@@ -68,6 +62,7 @@
   .dashcode-app .recharts-tooltip-wrapper {
     border: none !important;
   }
+
 }
 @layer components {
   .table-th {
@@ -1197,7 +1192,7 @@
   .item-has-children .parent_active .icon-box,
   .item-has-children .parent_active .menu-icon,
   .item-has-children .parent_active .text-box {
-    @apply text-slate-700 dark:text-slate-200;
+    @apply text-white dark:text-slate-200;
   }
   .item-has-children .parent_active .menu-arrow {
     @apply bg-secondary-500 text-slate-600 text-opacity-70 bg-opacity-30 dark:text-white;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Icon from "@/components/ui/Icon";
 import SwitchDark from "./Tools/SwitchDark";
 import HorizentalMenu from "./Tools/HorizentalMenu";
@@ -17,6 +17,7 @@ import useRtl from "@/hooks/useRtl";
 import useMobileMenu from "@/hooks/useMobileMenu";
 import MonoChrome from "./Tools/MonoChrome";
 import HeaderCart from "./Tools/cart";
+import useAuth from '@/hooks/useAuth'
 
 const Header = ({ className = "custom-class" }) => {
   const [collapsed, setMenuCollapsed] = useSidebar();
@@ -46,6 +47,8 @@ const Header = ({ className = "custom-class" }) => {
     setMobileMenu(!mobileMenu);
   };
 
+  const [userLogged, isLogged] = useAuth()
+
   const borderSwicthClass = () => {
     if (skin === "bordered" && navbarType !== "floating") {
       return "border-b border-slate-200 dark:border-slate-700";
@@ -58,7 +61,7 @@ const Header = ({ className = "custom-class" }) => {
   return (
     <header>
       <div
-        className={` app-header md:px-6 px-[15px]  dark:bg-slate-800 shadow-base dark:shadow-base3 bg-white
+        className={`border-b border-white app-header md:px-6 px-[15px]  dark:bg-slate-800 shadow-base dark:shadow-base3 bg-[#000000]
         ${borderSwicthClass()}
              ${
                menuType === "horizontal" && width > breakpoints.xl
@@ -67,9 +70,7 @@ const Header = ({ className = "custom-class" }) => {
              }
         `}
       >
-        <div className="flex justify-end items-center h-full">
-          {/* For Vertical  */}
-
+        <div className="flex justify-between items-center h-full">
           {/* For Horizontal  */}
           {menuType === "horizontal" && (
             <div className="flex items-center space-x-4 rtl:space-x-reverse">
@@ -90,6 +91,9 @@ const Header = ({ className = "custom-class" }) => {
             <HorizentalMenu />
           ) : null}
           {/* Nav Tools  */}
+
+          {isLogged == true ?
+          
           <div className="nav-tools flex items-center lg:space-x-6 space-x-3 rtl:space-x-reverse">
             <HeaderCart />
             {width >= breakpoints.md && <Notification />}
@@ -103,6 +107,16 @@ const Header = ({ className = "custom-class" }) => {
               </div>
             )}
           </div>
+
+          :
+          
+          <div className="nav-tools flex items-center lg:space-x-6 space-x-3 rtl:space-x-reverse">
+            <button className="btn btn-primary btn-sm bg-white text-[#000000]">Iniciar sesión</button>
+            <button className="btn btn-outline btn-sm text-white">Registrarse</button>
+          </div>
+          
+          }
+          
         </div>
       </div>
     </header>

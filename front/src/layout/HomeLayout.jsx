@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Suspense} from 'react'
 import { ToastContainer } from 'react-toastify'
 import HomeHeader from "@/components/partials/homeheader";
 import useWidth from '@/hooks/useWidth';
@@ -6,8 +6,9 @@ import useMenulayout from "@/hooks/useMenulayout";
 import useMenuHidden from '@/hooks/useMenuHidden';
 import useSidebar from '@/hooks/useSidebar';
 import Home from '@/pages/home';
-
-
+import { Outlet } from 'react-router-dom';
+import Loading from "@/components/Loading";
+import Reproductor from "@/components/partials/Reproductor";
 function HomeLayout() {
 
 
@@ -30,9 +31,11 @@ function HomeLayout() {
 
     return (
         <>
-            {/* <ToastContainer/>
-            <HomeHeader className={width > breakpoints.xl ? switchHeaderClass() : ""} /> */}
-            <Home/>
+            <Suspense fallback={<Loading />}>
+              <HomeHeader className={width > breakpoints.xl ? switchHeaderClass() : ""} />
+              {<Outlet />}
+              <Reproductor/>
+            </Suspense>
         </>
     )
 }

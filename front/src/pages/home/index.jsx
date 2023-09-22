@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import React, { useRef, useState } from 'react';
 import { gsap } from 'gsap';
+import {useNavigate} from 'react-router-dom'
 
 import "@/pages/home/index.css"
 
@@ -13,7 +14,7 @@ import thunder4 from '@/assets/images/home/thunder4bien.png'
 import logolambda from '@/assets/videos/home/logolambda.mp4'
 import ReactPlayer from 'react-player';
 
-function Home() {
+function Bienvenida() {
   const elementRef1 = useRef(null);
   const elementRef2 = useRef(null);
   const elementRef3 = useRef(null);
@@ -24,6 +25,10 @@ function Home() {
 
   const playerRef = useRef(null);
   const playerRefClone = useRef(null);
+
+
+
+  const navigate = useNavigate()
 
 
   const handleVideoEnd = () => {
@@ -221,7 +226,7 @@ function Home() {
               <img className='w-full h-full grayscale opacity-0 scale-150' ref={elementRef1} src={thunder3} alt="Rayo" />
             </div>
             
-            <span className="z-10 absolute">Beats</span>
+            <span className="z-10 absolute" onClick={(e) => navigate("/feed")}>Beats</span>
         </div>
 
         <div
@@ -233,7 +238,7 @@ function Home() {
               <img className='w-full h-full grayscale opacity-0 scale-150' ref={elementRef2} src={thunder4} alt="Rayo" />
             </div>
             
-            <span className="z-10 absolute text-vertical" style={{writingMode: 'vertical-rl', textOrientation: 'upright', fontFamily: 'Laira' }}>Proyectos</span>
+            <span className="z-10 absolute text-vertical" style={{writingMode: 'vertical-rl', textOrientation: 'upright'}}>Proyectos</span>
         </div>
 
         <div
@@ -272,4 +277,4 @@ function Home() {
   );
 };
 
-export default Home
+export default Bienvenida

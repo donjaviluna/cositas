@@ -2,6 +2,7 @@ import React from "react";
 import useDarkMode from "@/hooks/useDarkMode";
 import { Link } from "react-router-dom";
 import useWidth from "@/hooks/useWidth";
+import logolambda from '@/assets/videos/home/logolambda.mp4'
 
 import MainLogo from "@/assets/images/logo/logo.svg";
 import LogoWhite from "@/assets/images/logo/logo-white.svg";
@@ -13,9 +14,9 @@ const Logo = () => {
 
   return (
     <div>
-      <Link to="/dashboard">
+      <Link to="/">
         {width >= breakpoints.xl ? (
-          <img src={isDark ? LogoWhite : MainLogo} alt="" />
+          <video className='w-14 h-14 object-cover' loop autoPlay muted src={logolambda} />
         ) : (
           <img src={isDark ? MobileLogoWhite : MobileLogo} alt="" />
         )}

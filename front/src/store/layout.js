@@ -30,7 +30,8 @@ const initialSkin = () => {
 
 const initialType = () => {
   const item = window.localStorage.getItem("type");
-  return item ? JSON.parse(item) : themeConfig.layout.type;
+  // return item ? JSON.parse(item) : themeConfig.layout.type;
+  return "horizontal"
 };
 
 const initialMonochrome = () => {
